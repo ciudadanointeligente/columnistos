@@ -6,6 +6,17 @@ Autores en [COLLABORATORS.md].
 
 PRs bienvenidos.
 
+
+## En los medios:
+
+[Resumen de 2018 de Columnitos Argentina:](https://distintaslatitudes.net/columnistos-bot-documentar-brecha-de-genero-en-medios-argentinos)
+
+[En Distintas Latitudes:](https://distintaslatitudes.net/columnistos-bot-documentar-brecha-de-genero-en-medios-argentinos)
+
+[En TELAM, la agencia de noticias estatal argentina:](http://www.telam.com.ar/notas/201712/232365-bot-tuiteo-genero-diarios.html)
+
+
+
 ## Bots Hermanas:
 
 Chile: [@columnistas_cl](https://twitter.com/columnistas_cl).
@@ -85,7 +96,7 @@ En la base se va a crear una table `articles` para los artículos y otra `author
 
 # Twitter
 
-Para lo que sigue se necesitas crear una nueva cuenta de Twitter desde la cuál van a mandar los mensajes y crear una app para que esa cuenta tenga permisos para usar la API de Twitter. Usando la nueva cuenta ir a [apps.twitter.com](https://apps.twitter.com/), necesitan los datos para completar en los siguientes `.sh` las variables:
+Para lo que sigue se necesitas crear una nueva cuenta de Twitter desde la cuál van a mandar los mensajes y crear una app para que esa cuenta tenga permisos para usar la API de Twitter. Usando la nueva cuenta ir a [apps.twitter.com](https://apps.twitter.com/), habilitar la opción de mandaar DMs para la aplicación. Necesitan copiar algunos valores de esta página para poder completar en los `.sh` las variables:
 
 ```
 export TWITTER_CONSUMER_KEY=""
@@ -115,6 +126,10 @@ Este es el paso que genera los tweets del resumen del día anterior al que se co
 runbottweet.sh
 ```
 
+# Dump
+
+En el archivo `dump_db.sh` hay instrucciones para sumar el dump que se genera al repositorio de la organización.
+
 # Cron
 
 Para que todo funcione automaticamente hay que agregar los `.sh` a algún cronjob. En el caso de [@columnistos] la configuración actual es:
@@ -123,6 +138,7 @@ Para que todo funcione automaticamente hay que agregar los `.sh` a algún cronjo
 30 * * * * $HOME/columnistos/runcrawlers.sh
 */15 * * * * $HOME/columnistos/runbotdm.sh
 0 10 * * * $HOME/columnistos/runbottweet.sh
+5 10 * * * $HOME/columnistos/dump_db.sh
 ```
 # Instalación y uso con Docker
 
